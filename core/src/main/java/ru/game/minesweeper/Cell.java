@@ -1,4 +1,4 @@
-package кгru.game.me;
+package ru.game.minesweeper;
 
 public class Cell {
     private boolean isMine;

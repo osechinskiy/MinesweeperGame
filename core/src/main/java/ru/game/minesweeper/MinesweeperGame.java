@@ -1,13 +1,11 @@
-package кгru.game.me;
+package ru.game.minesweeper;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class MinesweeperGame {
-
 
     private final int width;
     private final int height;
@@ -22,10 +20,10 @@ public class MinesweeperGame {
     private boolean gameOver;
     private boolean win;
     private BitmapFont font;
-    private String gameOverMessage;
+    private Main gameInstance;
 
-
-    public MinesweeperGame(int width, int height, int numMines) {
+    public MinesweeperGame(Main gameInstance, int width, int height, int numMines) {
+        this.gameInstance = gameInstance;
         this.width = width;
         this.height = height;
         this.numMines = numMines;
@@ -44,14 +42,12 @@ public class MinesweeperGame {
     }
 
     private void initialize() {
-        // Инициализация клеток и установка мин
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 cells[x][y] = new Cell();
             }
         }
 
-        // Установка мин
         int minesPlaced = 0;
         while (minesPlaced < numMines) {
             int x = (int) (Math.random() * width);
@@ -62,7 +58,6 @@ public class MinesweeperGame {
             }
         }
 
-        // Подсчет соседних мин
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 if (!cells[x][y].isMine()) {
@@ -73,7 +68,6 @@ public class MinesweeperGame {
 
         gameOver = false;
         win = false;
-        gameOverMessage = "";
     }
 
     private int countAdjacentMines(int x, int y) {
@@ -127,11 +121,7 @@ public class MinesweeperGame {
     private void gameOver(boolean isWin) {
         gameOver = true;
         win = isWin;
-        if (isWin) {
-            gameOverMessage = "Поздравляем! Вы выиграли!";
-        } else {
-            gameOverMessage = "Вы проиграли! Попробуйте снова.";
-        }
+        gameInstance.setScreen(new GameOverScreen(gameInstance, win));
     }
 
     private boolean checkWin() {
@@ -166,14 +156,6 @@ public class MinesweeperGame {
                     }
                 }
             }
-        }
-
-        // Отображение сообщения о победе или поражении
-        if (gameOver) {
-            GlyphLayout layout = new GlyphLayout(font, gameOverMessage);
-            float width = layout.width;
-            float height = layout.height;
-            font.draw(batch, gameOverMessage, (this.width * CELL_SIZE - width) / 2, (this.height * CELL_SIZE + height) / 2);
         }
     }
 }

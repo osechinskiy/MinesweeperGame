@@ -14,7 +14,7 @@
  */
 //Note, the above license and copyright applies to this file only.
 
-package кгru.game.me.lwjgl3;
+package ru.game.minesweeper.lwjgl3;
 
 import org.lwjgl.system.macosx.LibC;
 

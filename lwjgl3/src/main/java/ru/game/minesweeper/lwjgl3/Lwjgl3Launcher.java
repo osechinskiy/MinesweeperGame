@@ -1,8 +1,8 @@
-package кгru.game.me.lwjgl3;
+package ru.game.minesweeper.lwjgl3;
 
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import кгru.game.me.Main;
+import ru.game.minesweeper.Main;
 
 /** Launches the desktop (LWJGL3) application. */
 public class Lwjgl3Launcher {
@@ -20,7 +20,7 @@ public class Lwjgl3Launcher {
         configuration.setTitle("Minesweeper");
         configuration.useVsync(true);
         configuration.setForegroundFPS(Lwjgl3ApplicationConfiguration.getDisplayMode().refreshRate + 1);
-        configuration.setWindowedMode(640, 480);
+        configuration.setWindowedMode(800, 640);
         return configuration;
     }
 }

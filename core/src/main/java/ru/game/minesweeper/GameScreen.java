@@ -1,33 +1,29 @@
-package кгru.game.me;
+package ru.game.minesweeper;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-/**
- * {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms.
- */
-public class Main extends ApplicationAdapter {
+public class GameScreen implements Screen {
 
-    SpriteBatch batch;
-    MinesweeperGame game;
+    private SpriteBatch batch;
+    private MinesweeperGame game;
+    private int cellSize = 61;
+    private Main gameInstance;
 
-    @Override
-    public void create() {
-        batch = new SpriteBatch();
-        game = new MinesweeperGame(10, 10, 10); // 10x10 поле с 10 минами
-        int cellSize = 61; // Размер ячейки в пикселях
+    public GameScreen(Main gameInstance, int bombCount) {
+        this.gameInstance = gameInstance;
+        this.batch = new SpriteBatch();
+        this.game = new MinesweeperGame(gameInstance, 10, 10, bombCount);
 
         Gdx.input.setInputProcessor(new InputAdapter() {
             @Override
             public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-                // Преобразование координаты Y
                 int screenHeight = Gdx.graphics.getHeight();
                 int gameY = (screenHeight - screenY) / cellSize;
-
                 int gameX = screenX / cellSize;
 
                 if (button == Buttons.LEFT) {
@@ -41,12 +37,32 @@ public class Main extends ApplicationAdapter {
     }
 
     @Override
-    public void render() {
+    public void show() {
+    }
+
+    @Override
+    public void render(float delta) {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         game.render(batch);
         batch.end();
+    }
+
+    @Override
+    public void resize(int width, int height) {
+    }
+
+    @Override
+    public void pause() {
+    }
+
+    @Override
+    public void resume() {
+    }
+
+    @Override
+    public void hide() {
     }
 
     @Override
