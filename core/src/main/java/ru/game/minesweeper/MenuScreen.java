@@ -2,7 +2,6 @@ package ru.game.minesweeper;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -44,16 +43,21 @@ public class MenuScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.begin();
-        font.draw(batch, "Выберите количество бомб: " + bombCount, Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() / 2f, 0, Align.center, false);
-        font.draw(batch, "Нажмите UP для увеличения, DOWN для уменьшения", Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() / 2f - 30, 0, Align.center, false);
-        font.draw(batch, "Нажмите ENTER для начала игры", Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() / 2f - 60, 0, Align.center, false);
+        font.draw(batch, "Выберите количество бомб: " + bombCount, Gdx.graphics.getWidth() / 2f,
+            Gdx.graphics.getHeight() / 2f, 0, Align.center, false);
+        font.draw(batch, "Нажмите UP для увеличения, DOWN для уменьшения", Gdx.graphics.getWidth() / 2f,
+            Gdx.graphics.getHeight() / 2f - 30, 0, Align.center, false);
+        font.draw(batch, "Нажмите ENTER для начала игры", Gdx.graphics.getWidth() / 2f,
+            Gdx.graphics.getHeight() / 2f - 60, 0, Align.center, false);
         batch.end();
 
         if (Gdx.input.isKeyJustPressed(com.badlogic.gdx.Input.Keys.UP)) {
             bombCount++;
         }
         if (Gdx.input.isKeyJustPressed(com.badlogic.gdx.Input.Keys.DOWN)) {
-            if (bombCount > 1) bombCount--;
+            if (bombCount > 1) {
+                bombCount--;
+            }
         }
         if (Gdx.input.isKeyJustPressed(com.badlogic.gdx.Input.Keys.ENTER)) {
             game.startGame(bombCount);
@@ -61,16 +65,20 @@ public class MenuScreen implements Screen {
     }
 
     @Override
-    public void resize(int width, int height) {}
+    public void resize(int width, int height) {
+    }
 
     @Override
-    public void pause() {}
+    public void pause() {
+    }
 
     @Override
-    public void resume() {}
+    public void resume() {
+    }
 
     @Override
-    public void hide() {}
+    public void hide() {
+    }
 
     @Override
     public void dispose() {

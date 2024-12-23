@@ -1,6 +1,7 @@
 package ru.game.minesweeper;
 
 public class Cell {
+
     private boolean isMine;
     private boolean isOpened;
     private boolean isFlagged;

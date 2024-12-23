@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.utils.Align;
 
 public class GameOverScreen implements Screen {
+
     private final Main game;
     private SpriteBatch batch;
     private BitmapFont font;
@@ -23,7 +24,8 @@ public class GameOverScreen implements Screen {
     }
 
     @Override
-    public void show() {}
+    public void show() {
+    }
 
     private void initializeFont() {
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/roboto.ttf"));
@@ -40,9 +42,12 @@ public class GameOverScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.begin();
-        font.draw(batch, message, Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() / 2f + 50, 0, Align.center, false);
-        font.draw(batch, "Нажмите ENTER для начала новой игры", Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() / 2f, 0, Align.center, false);
-        font.draw(batch, "Нажмите ESC для выхода", Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() / 2f - 50, 0, Align.center, false);
+        font.draw(batch, message, Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() / 2f + 50, 0, Align.center,
+            false);
+        font.draw(batch, "Нажмите ENTER для начала новой игры", Gdx.graphics.getWidth() / 2f,
+            Gdx.graphics.getHeight() / 2f, 0, Align.center, false);
+        font.draw(batch, "Нажмите ESC для выхода", Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() / 2f - 50, 0,
+            Align.center, false);
         batch.end();
 
         if (Gdx.input.isKeyJustPressed(com.badlogic.gdx.Input.Keys.ENTER)) {
@@ -54,16 +59,20 @@ public class GameOverScreen implements Screen {
     }
 
     @Override
-    public void resize(int width, int height) {}
+    public void resize(int width, int height) {
+    }
 
     @Override
-    public void pause() {}
+    public void pause() {
+    }
 
     @Override
-    public void resume() {}
+    public void resume() {
+    }
 
     @Override
-    public void hide() {}
+    public void hide() {
+    }
 
     @Override
     public void dispose() {
